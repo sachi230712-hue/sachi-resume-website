@@ -1,0 +1,189 @@
+/* Colours, fonts and spacing: every value is defined once here */
+:root {
+  --bg: #0d1110;
+  --card: #141f1d;
+  --heading: #fff06c;
+  --text: #f0f4f3;
+  --accent: #01ffa5;
+  --sheet: #f7f7f7;
+  --ink: #000000;
+  --line: #4d7c43;
+  --font-head: "Alice", serif;
+  --font-body: "Montserrat", sans-serif;
+  --s1: 8px;
+  --s2: 24px;
+  --s3: 40px;
+  --s4: 56px;
+  --edge: 24px;
+}
+
+/* Page basics: dark background, body text, page width and images */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--edge) var(--s4);
+}
+img { display: block; max-width: 100%; height: auto; }
+
+/* Text: Alice headings, yellow key highlights, paragraphs kept to a readable width */
+h1, h2, h3 {
+  margin: 0 0 var(--s1);
+  color: var(--heading);
+  font-family: var(--font-head);
+  font-weight: 400;
+  line-height: 1.2;
+}
+h1 { margin-bottom: var(--s2); font-size: clamp(2.5rem, 8vw, 4rem); }
+h2 { margin-bottom: var(--s2); font-size: 2rem; }
+h3 { font-size: 1.4rem; }
+p { max-width: 68ch; margin: 0 0 var(--s1); }
+li { max-width: 68ch; }
+strong { color: var(--heading); font-weight: 600; }
+
+/* Links and buttons: the green accent is used only here */
+a { color: var(--accent); }
+a:hover { color: var(--text); }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+.card a, .resume-intro a { display: inline-block; padding: 10px 0; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s2);
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
+}
+.button:hover { background: transparent; color: var(--accent); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--s1); margin-top: var(--s2); }
+
+/* Navigation bar: a flexbox row that stays at the top while scrolling */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 var(--s2);
+  padding: var(--s1) max(var(--edge), calc((100% - 912px) / 2));
+  background: var(--bg);
+  border-bottom: 1px solid var(--card);
+}
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--heading);
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+.nav-list { display: flex; flex-wrap: wrap; gap: 0 var(--s2); margin: 0; padding: 0; list-style: none; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--accent); }
+
+/* Sections: even spacing between the main parts of the page */
+section { margin-top: var(--s4); scroll-margin-top: 80px; }
+.resume-intro { margin-top: var(--s4); scroll-margin-top: 80px; }
+
+/* Hero (#hero): photo beside the name, sentence and intro */
+#hero { display: flex; align-items: center; gap: var(--s3); margin-top: var(--s3); }
+.portrait { flex-shrink: 0; width: 160px; height: 160px; border-radius: 50%; object-fit: cover; }
+.lead { font-family: var(--font-head); font-size: 1.5rem; line-height: 1.4; }
+#hero p { margin-bottom: var(--s2); }
+
+/* Cards: flat panels laid out with grid, one column on narrow screens */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: var(--s2);
+  align-items: start;
+}
+.card { padding: var(--s2); background: var(--card); }
+.meta { margin-bottom: var(--s2); }
+.card ul { margin: 0; padding-left: var(--s2); }
+.card li { margin-bottom: var(--s1); }
+details { margin-bottom: var(--s1); }
+summary { padding: 10px 0; color: var(--accent); cursor: pointer; }
+summary:hover { color: var(--text); }
+.certs img { margin-top: var(--s1); }
+
+/* Designs gallery: images in a responsive grid with short captions */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--s2);
+  align-items: start;
+  margin-top: var(--s2);
+}
+.gallery figure { margin: 0; }
+figcaption { margin-top: var(--s1); }
+
+/* Resume (#resume): a light paper sheet with black text and green box lines */
+#resume {
+  max-width: 794px;
+  margin: var(--s2) 0 0;
+  padding: var(--s3);
+  border: 1px solid var(--line);
+  background: var(--sheet);
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.resume-name { margin: 0; font-family: var(--font-head); font-size: 2rem; }
+.resume-contact { margin-bottom: var(--s2); }
+#resume h3 {
+  margin: var(--s2) 0 var(--s1);
+  padding-bottom: var(--s1);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+#resume strong { color: var(--ink); }
+.resume-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--s2); margin-top: var(--s1); }
+.resume-row p { margin: 0; }
+#resume ul { margin: 0 0 var(--s1); padding-left: var(--s2); }
+
+/* Small screens (narrower than 700px): tighter edges, stacked hero, nav not sticky */
+@media (max-width: 699px) {
+  :root { --edge: 16px; }
+  .nav { position: static; }
+  #hero { flex-direction: column; align-items: flex-start; gap: var(--s2); }
+  #resume { padding: var(--s2) var(--edge); }
+}
+
+/* Print: hide everything except the resume and fit it on one A4 page */
+@page { size: A4; margin: 12mm; }
+@media print {
+  header, #hero, #experience, #competitions, #designs, .resume-intro, #connect { display: none; }
+  body { background: #ffffff; }
+  main { max-width: none; padding: 0; }
+  #resume {
+    --line: #000000;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ffffff;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+}
